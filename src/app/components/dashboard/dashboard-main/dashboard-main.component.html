@@ -1,0 +1,12 @@
+<div class="flex flex-column gap-2 p-2">
+  <div class="border-bottom-1  mx-0">
+    <demography-filter-form></demography-filter-form>
+  </div>
+  <div class="mx-2">
+    <ng-container *ngIf="showCityInfo | async">
+      <demography-city-title></demography-city-title>
+      <demography-chart-loading *ngIf="isLoading | async"></demography-chart-loading>
+      <demography-chart-container *ngIf="showChartContainer | async"></demography-chart-container>
+    </ng-container>
+  </div>
+</div>

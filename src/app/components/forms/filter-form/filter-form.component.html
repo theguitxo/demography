@@ -1,0 +1,29 @@
+<div class="grid">
+  <div class="md:col-6 col-12">
+    <p-dropdown
+      [options]="optionsProvinces"
+      optionValue="code"
+      optionLabel="name"
+      placeholder="Select a province"
+      [style]="{'width':'100%'}"
+      (onChange)="handleChangeProvince($event)">
+    </p-dropdown>
+  </div>
+  <div class="md:col-6 col-12">
+    <p-dropdown
+      [options]="optionsZipCodes"
+      optionLabel="name"
+      optionValue="code"
+      [filter]="true"
+      filterBy="name"
+      [showClear]="true"
+      [disabled]="(disableByProvincesFilter | async)!"
+      [virtualScroll]="true"
+      [virtualScrollItemSize]="30"
+      placeholder="Select a village / city"
+      [style]="{'width':'100%'}"
+      (onChange)="handleChangeCity($event)"
+      (onClear)="handleClearCity()">
+    </p-dropdown>
+  </div>
+</div>

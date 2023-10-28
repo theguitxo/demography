@@ -1,0 +1,22 @@
+<p-panel [header]="info.year" [toggleable]="true">
+  <div class="grid">
+    <div class="col-12 md:col-4">
+      <demography-chart-population
+        [title]="'men'"
+        [info]="menChart">
+      </demography-chart-population>
+    </div>
+    <div class="col-12 md:col-4">
+      <demography-chart-population
+        [title]="'women'"
+        [info]="womenChart">
+      </demography-chart-population>
+    </div>
+    <div class="col-12 md:col-4">
+      <demography-chart-population
+        [title]="'total'"
+        [info]="totalChart">
+      </demography-chart-population>
+    </div>
+  </div>
+</p-panel>
