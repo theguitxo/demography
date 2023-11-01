@@ -1,6 +1,6 @@
 
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { ZipCodeItem, ZipCodeListItem, ZipCodesState } from "../../models/zip-codes.models"
+import { ZipCodeListItem, ZipCodesState } from "../../models/zip-codes.models"
 import { ZIP_CODES, ZIP_CODES_FEATURE_KEY } from "../../constants/zip-codes.constants";
 import { DropdownOption } from "../../models/search-form.models";
 
