@@ -6,6 +6,7 @@ import { getLoadZipCodes, getNavigateDashboard } from './store/zip-codes/zip-cod
 import { loadZipCodes } from './store/zip-codes/zip-codes.actions';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { zipCodesInitialState } from './store/zip-codes/zip-codes.reducers';
 
 @Component({
   selector: 'demography-dashboard-main',
@@ -16,15 +17,7 @@ class DashboardMainComponentMock {}
 describe(AppComponent.name, () => {
   let fixture: ComponentFixture<AppComponent>;
   let component: AppComponent;
-  let store: MockStore;
-
-  const initialState: ZipCodesState = {
-    errorLoading: false,
-    itemsList: [],
-    loaded: false,
-    loading: false,
-    provincesFilter: []
-  };
+  let store: MockStore<ZipCodesState>;
 
   let getLoadZipCodesSpy: any;
   let mockRouter = { navigate: jasmine.createSpy('navigate') };
@@ -34,7 +27,7 @@ describe(AppComponent.name, () => {
       imports: [AppComponent],
       providers: [
         provideMockStore({
-          initialState,
+          initialState: zipCodesInitialState,
           selectors: [
             {
               selector: getLoadZipCodes,

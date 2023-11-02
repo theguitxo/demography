@@ -20,7 +20,7 @@ export const selectErrorLoading = createSelector(
 
 export const selectZipCodeSelected = createSelector(
   selectChartData,
-  (state: ChartDataState): string => state.zipCodeSelected);
+  (state: ChartDataState): string => state?.zipCodeSelected);
 
 export const selectCityName = createSelector(
   getZipCodesList,

@@ -45,7 +45,6 @@ export class AppComponent implements OnInit {
     this.store.select(getNavigateDashboard)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((value: boolean) => {
-        console.log(value);
         if (value) {
           this.router.navigate(['dashboard']);
         }

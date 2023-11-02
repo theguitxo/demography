@@ -32,12 +32,12 @@ export const getNavigateDashboard = createSelector(
 
 export const getDisableByProvincesFilter = createSelector(
   selectZipCodes,
-  (state: ZipCodesState): boolean => state.provincesFilter.length <= 0);
+  (state: ZipCodesState): boolean => state?.provincesFilter?.length <= 0);
 
 export const getZipCodesFiltered = createSelector(
   selectZipCodes,
   (state: ZipCodesState): DropdownOption[] => {
-    const result: DropdownOption[] = state.provincesFilter?.map((zipCode: ZIP_CODES) =>
+    const result: DropdownOption[] = state?.provincesFilter?.map((zipCode: ZIP_CODES) =>
       state.itemsList?.
         filter((item: ZipCodeListItem) => item.codi_postal.some(code => code.startsWith(zipCode))))?.
         flat()?.
