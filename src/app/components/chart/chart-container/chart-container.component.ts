@@ -38,6 +38,6 @@ export class ChartContainerComponent implements OnInit {
   
   ngOnInit(): void {
     this.haveChartInfo = this.store.select(selectHaveChartInfo);
-    this.chartInfo = this.store.select(selectChartInfo)
+    this.chartInfo = this.store.select(selectChartInfo);
   }
 }
