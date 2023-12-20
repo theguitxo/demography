@@ -26,8 +26,7 @@ bootstrapApplication(AppComponent, {
       logOnly: !isDevMode(),
       autoPause: true,
       trace: false,
-      traceLimit: 75,
-      connectOutsideZone: true
+      traceLimit: 75
     }),
     DataAPIService
   ]
