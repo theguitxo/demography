@@ -17,7 +17,7 @@
       [filter]="true"
       filterBy="name"
       [showClear]="true"
-      [disabled]="(disableByProvincesFilter | async)!"
+      [disabled]="disableByProvincesFilter()"
       [virtualScroll]="true"
       [virtualScrollItemSize]="30"
       placeholder="Select a village / city"

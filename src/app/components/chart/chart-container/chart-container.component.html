@@ -1,9 +1,10 @@
-<ng-container *ngIf="haveChartInfo | async; else noData">
-  <ng-container *ngFor="let chart of (chartInfo | async); let isLast = last">
-    <demography-chart-group [info]="chart"></demography-chart-group>
-    <p-divider *ngIf="!isLast"></p-divider>
-  </ng-container>
-</ng-container>
-<ng-template #noData>
+@if (haveChartInfo()) {
+  @for (chart of chartInfo(); track chart; let isLast = $last) {
+    <demography-chart-group [info]="chart" />
+    @if (!isLast) {
+      <p-divider></p-divider>
+    }
+  }
+} @else {
   <p-messages [value]="noDataMessage" [enableService]="false" [closable]="false"></p-messages>
-</ng-template>
+}

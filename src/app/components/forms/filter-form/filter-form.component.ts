@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, DestroyRef, OnInit, inject } from "@angular/core";
+import { ChangeDetectionStrategy, Component, DestroyRef, Injector, OnInit, Signal, inject } from "@angular/core";
 import { DropdownChangeEvent, DropdownModule } from "primeng/dropdown";
 import { ZipCodesState } from "../../../models/zip-codes.models";
 import { Store } from "@ngrx/store";
@@ -9,14 +9,14 @@ import { Observable } from "rxjs";
 import { setZipCodesFilters } from "../../../store/zip-codes/zip-codes.actions";
 import { resetChartData, setZipCodeSelected } from "../../../store/chart-data/chart-data.actions";
 import { getDisableByProvincesFilter, getZipCodesFiltered } from "../../../store/zip-codes/zip-codes.selectors";
-import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { takeUntilDestroyed, toSignal } from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'demography-filter-form',
   templateUrl: './filter-form.component.html',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    CommonModule,
     DropdownModule,
   ]
 })
@@ -27,7 +27,9 @@ export class FilterFormComponent implements OnInit {
   optionsZipCodes: DropdownOption[] = [];
   optionsProvinces: DropdownOption[] = FILTER_PROVINCE_OPTIONS;
 
-  disableByProvincesFilter!: Observable<boolean>;
+  disableByProvincesFilter!: Signal<boolean>;
+
+  private injector = inject(Injector);
 
   ngOnInit(): void {
     this.initSubscriptions();
@@ -59,6 +61,9 @@ export class FilterFormComponent implements OnInit {
         this.optionsZipCodes = values;
       });
 
-    this.disableByProvincesFilter = this.store.select(getDisableByProvincesFilter);
+    this.disableByProvincesFilter = toSignal(this.store.select(getDisableByProvincesFilter), {
+      initialValue: false,
+      injector: this.injector
+    });
   }
 }
