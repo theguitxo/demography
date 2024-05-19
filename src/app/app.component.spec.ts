@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { ZipCodesState } from './models/zip-codes.models';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
-import { getLoadZipCodes, getNavigateDashboard } from './store/zip-codes/zip-codes.selectors';
+import { getLoadZipCodes, getNavigateDashboard, selectLoading } from './store/zip-codes/zip-codes.selectors';
 import { loadZipCodes } from './store/zip-codes/zip-codes.actions';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
@@ -29,6 +29,10 @@ describe(AppComponent.name, () => {
         provideMockStore({
           initialState: zipCodesInitialState,
           selectors: [
+            {
+              selector: selectLoading,
+              value: false
+            },
             {
               selector: getLoadZipCodes,
               value: true

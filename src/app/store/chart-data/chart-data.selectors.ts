@@ -2,7 +2,7 @@ import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { CanLoadChartDataInfo, ChartDataItem, ChartDataResponse, ChartDataState } from "../../models/chart-data.model";
 import { CHART_DATA_FEATURE_KEY } from "../../constants/chart-data.constants";
 import { getZipCodesList } from "../zip-codes/zip-codes.selectors";
-import { ZipCodeItem, ZipCodeListItem } from "../../models/zip-codes.models";
+import { ZipCodeListItem } from "../../models/zip-codes.models";
 
 export const selectChartData = createFeatureSelector<ChartDataState>(CHART_DATA_FEATURE_KEY);
 
